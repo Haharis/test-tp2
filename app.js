@@ -49,8 +49,10 @@ app
         /**
          * Implémenter le controlleur
          */
-
-        res.send('Not implemented');
+        var repository = new UserRepository(db);
+        var user = req.body;
+        var user_updated = repository.update(user);
+        res.send(user_updated);
     })
 
     //suppression d'un utilisateur

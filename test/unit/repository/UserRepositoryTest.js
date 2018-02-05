@@ -47,7 +47,7 @@ describe("UserRepository", function() {
 });
 
 describe("UserRepository FindOneById", function() {
-    it("should call db.write", function(){
+    it("should call db.value", function(){
         var mockDb = jasmine.createSpyObj('db', ['get', 'push', 'write', 'find', 'value']);
         mockDb.get.and.returnValue(mockDb);
         mockDb.push.and.returnValue(mockDb);
@@ -84,5 +84,61 @@ describe("UserRepository FindOneById", function() {
         };
 
         expect(f).toThrow('User ID is undefined');
+    });
+});
+
+describe("UserRepository Update", function() {
+    it("should call db.write", function(){
+        var mockDb = jasmine.createSpyObj('db', ['get', 'push', 'find', 'assign', 'write']);
+        mockDb.get.and.returnValue(mockDb);
+        mockDb.push.and.returnValue(mockDb);
+        mockDb.find.and.returnValue(mockDb);
+        mockDb.assign.and.returnValue(mockDb);
+
+        var repository = new UserRepository(mockDb);
+        repository.create({
+            id : 1,
+            firstname: 'John',
+            lastname : 'Doe',
+            birthday : '2000-01-01'
+        });
+
+        repository.update({
+            id : 1,
+            firstname : 'Bruno',
+            lastname : 'Benjamin Pierrot',
+            birthday : '1995-09-24'
+        })
+
+        expect(mockDb.get).toHaveBeenCalledWith('users');
+        expect(mockDb.get).toHaveBeenCalledTimes(2);
+        expect(mockDb.find).toHaveBeenCalledWith({id: 1});
+        expect(mockDb.find).toHaveBeenCalledTimes(1);
+        expect(mockDb.assign).toHaveBeenCalledWith({
+            id : 1,
+            firstname : 'Bruno',
+            lastname : 'Benjamin Pierrot',
+            birthday : '1995-09-24'
+        });
+        expect(mockDb.assign).toHaveBeenCalledTimes(1);
+        expect(mockDb.write).toHaveBeenCalledTimes(2);
+    });
+
+    it("should throw exception undefined", function(){
+        var repository = new UserRepository({});
+        var f = function(){
+            repository.update();
+        };
+
+        expect(f).toThrow('User object is undefined')
+    });
+
+    it("should throw exception missing information", function(){
+        var repository = new UserRepository({});
+        var f = function(){
+            repository.update({});
+        };
+
+        expect(f).toThrow('User object is missing information')
     });
 });
