@@ -1,0 +1,285 @@
+{
+	"info": {
+		"name": "test-tp2",
+		"_postman_id": "56da8fe5-c07d-f596-d325-7db64f9aa1ab",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e5f5fb2b-9679-4cdb-9787-f825650af391",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Response should be okay', function () {",
+							"    pm.response.to.have.status(200)",
+							"    pm.response.to.have.status('OK')",
+							"});",
+							"",
+							"pm.test('Response should contain id', function () {",
+							"    pm.response.to.have.jsonBody('id')",
+							"});",
+							"",
+							"pm.test('Response should contain firstname', function () {",
+							"    pm.response.to.have.jsonBody('firstname')",
+							"});",
+							"",
+							"pm.test('Response should contain lastname', function () {",
+							"    pm.response.to.have.jsonBody('lastname')",
+							"});",
+							"",
+							"pm.test('Response should contain birthday', function () {",
+							"    pm.response.to.have.jsonBody('birthday')",
+							"});",
+							"",
+							"var response = pm.response.json();",
+							"pm.environment.set('id', response.id)",
+							"pm.environment.set('firstname', response.firstname)",
+							"pm.environment.set('lastname', response.lastname)",
+							"pm.environment.set('birthday', response.birthday)"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "John",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "doe",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "birthday",
+							"value": "2001-01-10",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f74cc878-a460-42fd-8ced-5138e2ed63a8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Response should be okay', function () {",
+							"    pm.response.to.have.status(200)",
+							"    pm.response.to.have.status('OK')",
+							"});",
+							"",
+							"pm.test('Response should contain id', function () {",
+							"    pm.response.to.have.jsonBody('id')",
+							"});",
+							"",
+							"pm.test('Response should contain firstname', function () {",
+							"    pm.response.to.have.jsonBody('firstname')",
+							"});",
+							"",
+							"pm.test('Response should contain lastname', function () {",
+							"    pm.response.to.have.jsonBody('lastname')",
+							"});",
+							"",
+							"pm.test('Response should contain birthday', function () {",
+							"    pm.response.to.have.jsonBody('birthday')",
+							"});",
+							"",
+							"var response = pm.response.json();",
+							"pm.environment.set('id', response.id)",
+							"pm.environment.set('firstname', response.firstname)",
+							"pm.environment.set('lastname', response.lastname)",
+							"pm.environment.set('birthday', response.birthday)"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/user/46813462-5b7a-4a0b-b88c-47c0fc4aa850",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"46813462-5b7a-4a0b-b88c-47c0fc4aa850"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9f36700a-37d2-4f91-9b53-252568d85605",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Response should be okay', function () {",
+							"    pm.response.to.have.status(200)",
+							"    pm.response.to.have.status('OK')",
+							"});",
+							"",
+							"pm.test('Response should contain id', function () {",
+							"    pm.response.to.have.jsonBody('id')",
+							"});",
+							"",
+							"pm.test('Response should contain firstname', function () {",
+							"    pm.response.to.have.jsonBody('firstname')",
+							"});",
+							"",
+							"pm.test('Response should contain lastname', function () {",
+							"    pm.response.to.have.jsonBody('lastname')",
+							"});",
+							"",
+							"pm.test('Response should contain birthday', function () {",
+							"    pm.response.to.have.jsonBody('birthday')",
+							"});",
+							"",
+							"var response = pm.response.json();",
+							"pm.environment.set('id', response.id)",
+							"pm.environment.set('firstname', response.firstname)",
+							"pm.environment.set('lastname', response.lastname)",
+							"pm.environment.set('birthday', response.birthday)"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "46813462-5b7a-4a0b-b88c-47c0fc4aa850",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Brunoir",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Benjamin Pierrot",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "birthday",
+							"value": "1995-09-24",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed5ccea7-3658-44fd-a330-6bf643cebc02",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Response should be okay', function () {",
+							"    pm.response.to.have.status(200)",
+							"    pm.response.to.have.status('OK')",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/user/bdbad820-5bcd-4d1f-9921-7dd4994dce25",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"bdbad820-5bcd-4d1f-9921-7dd4994dce25"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

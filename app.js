@@ -66,7 +66,7 @@ app
         var repository = new UserRepository(db);
         repository.delete(id);
         res.header("Access-Control-Allow-Origin", "*");
-        res.send('Success');
+        res.send();
     });
 
 
