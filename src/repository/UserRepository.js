@@ -66,10 +66,11 @@ UserRepository.prototype.update = function (user) {
  * @param {number} id
  */
 UserRepository.prototype.delete = function (id) {
+    if(!id)
+        throw 'User ID is undefined';
 
+    user = this.findOneById(id);
+    this.db.get('users').remove(user).write();
 };
 
-
 module.exports = UserRepository;
-
-
