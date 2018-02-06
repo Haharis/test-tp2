@@ -138,7 +138,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:3000/user/46813462-5b7a-4a0b-b88c-47c0fc4aa850",
+					"raw": "http://localhost:3000/user/0571ecc8-5e3d-497d-a31a-ecb5dcdd9eaa",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -146,7 +146,7 @@
 					"port": "3000",
 					"path": [
 						"user",
-						"46813462-5b7a-4a0b-b88c-47c0fc4aa850"
+						"0571ecc8-5e3d-497d-a31a-ecb5dcdd9eaa"
 					]
 				},
 				"description": ""
@@ -193,6 +193,9 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "PUT",
 				"header": [
 					{
@@ -205,7 +208,7 @@
 					"urlencoded": [
 						{
 							"key": "id",
-							"value": "46813462-5b7a-4a0b-b88c-47c0fc4aa850",
+							"value": "0571ecc8-5e3d-497d-a31a-ecb5dcdd9eaa",
 							"description": "",
 							"type": "text"
 						},
@@ -250,23 +253,48 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ed5ccea7-3658-44fd-a330-6bf643cebc02",
+						"id": "e6807744-6b1f-4a05-a8d1-91399f7477d4",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test('Response should be okay', function () {",
 							"    pm.response.to.have.status(200)",
 							"    pm.response.to.have.status('OK')",
-							"});"
+							"});",
+							"",
+							"pm.test('Response should contain id', function () {",
+							"    pm.response.to.have.jsonBody('id')",
+							"});",
+							"",
+							"pm.test('Response should contain firstname', function () {",
+							"    pm.response.to.have.jsonBody('firstname')",
+							"});",
+							"",
+							"pm.test('Response should contain lastname', function () {",
+							"    pm.response.to.have.jsonBody('lastname')",
+							"});",
+							"",
+							"pm.test('Response should contain birthday', function () {",
+							"    pm.response.to.have.jsonBody('birthday')",
+							"});",
+							"",
+							"var response = pm.response.json();",
+							"pm.environment.set('id', response.id)",
+							"pm.environment.set('firstname', response.firstname)",
+							"pm.environment.set('lastname', response.lastname)",
+							"pm.environment.set('birthday', response.birthday)"
 						]
 					}
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "DELETE",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:3000/user/bdbad820-5bcd-4d1f-9921-7dd4994dce25",
+					"raw": "http://localhost:3000/user/0571ecc8-5e3d-497d-a31a-ecb5dcdd9eaa",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -274,7 +302,7 @@
 					"port": "3000",
 					"path": [
 						"user",
-						"bdbad820-5bcd-4d1f-9921-7dd4994dce25"
+						"0571ecc8-5e3d-497d-a31a-ecb5dcdd9eaa"
 					]
 				},
 				"description": ""

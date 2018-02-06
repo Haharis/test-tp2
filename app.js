@@ -25,7 +25,7 @@ app
             res.send(user);
         } else
             res.header("Access-Control-Allow-Origin", "*");
-            res.send(null);
+            res.send();
         //res.send('Not implemented');
     })
 
@@ -64,9 +64,10 @@ app
          */
         var id = req.params.id;
         var repository = new UserRepository(db);
+        var user_deleted = repository.findOneById(id);
         repository.delete(id);
         res.header("Access-Control-Allow-Origin", "*");
-        res.send();
+        res.send(user_deleted);
     });
 
 
